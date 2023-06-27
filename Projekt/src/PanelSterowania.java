@@ -82,7 +82,11 @@ public class PanelSterowania{
                             System.out.println("Najpierw utwórz nową datę.");
                         }
                     }
-                    case 8 -> System.exit(1);
+                    case 8 -> {
+                        databaseConnector.closeConnection();
+                        System.exit(1);
+                    }
+                        
                     default -> System.out.println("Nieprawidłowa opcja. Spróbuj ponownie.");
                 }
                 databaseConnector.closeConnection();
