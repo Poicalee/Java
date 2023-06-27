@@ -30,8 +30,8 @@ public class PanelSterowania{
                     opcja = scanner.nextInt();
                 } catch (InputMismatchException e) {
                     System.out.println("błąd");
+                        scanner.nextLine();
                 }
-                scanner.nextLine();
                 switch (opcja) {
                     case 1 -> data = Data.pobierzDate();
                     case 2 -> {
