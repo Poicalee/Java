@@ -1,0 +1,57 @@
+@startuml
+interface OperacjeDaty {
+~ void addD(int)
+~ void addM(int)
+~ void minD(int)
+~ void minM(int)
+~ void wykonajOperacje()
+~ int roznica(Data)
+~ String toString(String)
+~ String wybierzFormat()
+}
+interface SprawdznieSw {
+~ boolean czySwieto(Data)
+}
+class Data {
+- int dzien
+- int miesiac
+- int rok
++ void addD(int)
++ void minD(int)
++ void addM(int)
++ void minM(int)
++ int roznica(Data)
++ String toString(String)
++ String wybierzFormat()
++ {static} Data pobierzDate()
++ void wykonajOperacje()
++ int getMiesiac()
++ int getDzien()
+}
+class DatabaseConnector {
+- Connection connection
++ Connection getConnection()
++ void closeConnection()
++ void dodajSwieto(Data,String)
++ void aktualizujSwieto(int,Data,String)
++ void usunSwieto(int)
++ void wyswietlSwieta()
+}
+class SprawdzanieSwiat {
+- Connection connection
++ boolean czySwieto(Data)
+}
+class PanelSterowania {
+- Data data
+- DatabaseConnector databaseConnector
+- SprawdzanieSwiat sprawdzanieSwiat
++ void rozpocznij()
+}
+class Main {
++ {static} void main(String[])
+}
+
+
+OperacjeDaty <|.. Data
+SprawdznieSw <|.. SprawdzanieSwiat
+@enduml
